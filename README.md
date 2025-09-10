@@ -1,12 +1,12 @@
 Projeto Torreta com Servos e Joystick
-Este projeto Arduino controla uma torreta robótica com movimentos nos eixos X e Y usando um joystick. O código lê os valores do joystick para mover os servos e a serial é usada para monitorar os dados.
+Este projeto Arduino controla uma torreta robótica com movimentos nos eixos X, Y  e Z usando um joystick. O código lê os valores do joystick para mover os servos e a serial é usada para monitorar os dados.
 
 2. Componentes Necessários
 Liste todo o hardware necessário para que alguém possa replicar seu projeto.
 
 1 x Placa Arduino (Uno ou similar)
 
-2 x Servos (SG90 ou MG996R)
+3 x Servos (SG90 ou MG996R)
 
 1 x Joystick Analógico
 
@@ -26,6 +26,7 @@ GND -> GND
 VRx (movimento horizontal) -> Pino Analógico A0
 
 VRy (movimento vertical) -> Pino Analógico A1
+VRz (movimento de profundidade) -> Pino Analógico A2
 
 SW (botão do joystick) -> Pino Digital 12 (opcional, se você for usá-lo)
 
@@ -34,6 +35,7 @@ Servos:
 ServoX (movimento horizontal) -> Pino Digital 9
 
 ServoY (movimento vertical) -> Pino Digital 10
+ServoZ (movimento de profundidade) -> Pino Digital 11
 
 4. Código e Bibliotecas
 Mencione as bibliotecas necessárias para o seu código.
