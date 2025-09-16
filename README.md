@@ -1,56 +1,82 @@
-Projeto Torreta com Servos e Joystick
-Este projeto Arduino controla uma torreta robótica com movimentos nos eixos X, Y  e Z usando um joystick. O código lê os valores do joystick para mover os servos e a serial é usada para monitorar os dados.
+Arduino Laser Turret
 
-2. Componentes Necessários
-Liste todo o hardware necessário para que alguém possa replicar seu projeto.
+Este projeto implementa uma torreta controlada por potenciômetros com laser e disparo simulado por servo motor.
+Ele utiliza dois potenciômetros para controlar a posição X e Y da torreta (movimento horizontal e vertical), além de um botão que aciona o disparo.
 
-1 x Placa Arduino (Uno ou similar)
+📌 Funcionalidades
 
-3 x Servos (SG90 ou MG996R)
+Controle do eixo X e eixo Y da torreta com potenciômetros analógicos.
 
-1 x Joystick Analógico
+Acionamento de um laser para mira.
 
-Fios jumpers
+Botão de disparo que move o servo de gatilho simulando o tiro.
 
-Protoboard (opcional)
+Envio de valores de posição pelo Serial Monitor para depuração.
 
-3. Diagrama de Conexões
-Descreva como os componentes estão conectados. Se você tiver uma imagem do seu circuito, coloque-a aqui! Isso é a parte mais importante para a pessoa que for usar seu código.
+🔧 Hardware Necessário
 
-Joystick:
+Arduino UNO (ou compatível)
 
-VCC -> +5V
+2 × Potenciômetros (controle X e Y)
 
-GND -> GND
+1 × Botão
 
-VRx (movimento horizontal) -> Pino Analógico A0
+1 × Módulo Laser
 
-VRy (movimento vertical) -> Pino Analógico A1
-VRz (movimento de profundidade) -> Pino Analógico A2
+3 × Servos (eixo X, eixo Y e gatilho/disparo)
 
-SW (botão do joystick) -> Pino Digital 12 (opcional, se você for usá-lo)
+Jumpers e protoboard
 
-Servos:
+🗂️ Ligações
+Componente	Pino Arduino
+Potenciômetro X	A0
+Potenciômetro Y	A1
+Botão Disparo	D13
+Laser	D8
+Servo X	D9
+Servo Y	D10
+Servo Disparo	D11
+📜 Dependências
 
-ServoX (movimento horizontal) -> Pino Digital 9
+As seguintes bibliotecas devem estar instaladas na IDE Arduino:
 
-ServoY (movimento vertical) -> Pino Digital 10
-ServoZ (movimento de profundidade) -> Pino Digital 11
+Servo
+ (nativa)
 
-4. Código e Bibliotecas
-Mencione as bibliotecas necessárias para o seu código.
+Button
 
-O projeto usa a biblioteca padrão Servo.h, que já vem instalada na Arduino IDE.
+▶️ Como Usar
 
-5. Como Usar
-Explique os passos para compilar e fazer o upload do código.
+Monte o circuito conforme a tabela de ligações.
 
-Conecte os componentes como no diagrama acima.
+Carregue o código no Arduino.
 
-Abra o arquivo .ino na Arduino IDE.
+Abra o Serial Monitor em 9600 baud para acompanhar os valores X e Y.
 
-Certifique-se de que a placa e a porta serial estão selecionadas corretamente.
+Use os potenciômetros para mover a torreta.
 
-Faça o upload do código para a sua placa Arduino.
+Pressione o botão para disparar (servo do gatilho se movimenta).
 
-Abra o monitor serial para ver os valores de depuração e testar os movimentos.
+🔍 Lógica de Funcionamento
+
+Os valores analógicos dos potenciômetros (0–1023) são mapeados para ângulos compatíveis com os servos:
+
+Eixo X → 30° a 150°
+
+Eixo Y → 0° a 180°
+
+O botão é monitorado via biblioteca Button.
+
+Ao pressionar o botão, o servo de disparo move de posição de repouso (90°) até posição de disparo (180°) e retorna.
+
+O laser é ligado permanentemente na inicialização (digitalWrite(laser_pin, HIGH)).
+
+📷 Exemplo de Aplicação
+
+Esse código pode ser utilizado para:
+
+Protótipos de torretas com laser educativo.
+
+Projetos de robótica maker.
+
+Demonstração de controle de múltiplos servos.
